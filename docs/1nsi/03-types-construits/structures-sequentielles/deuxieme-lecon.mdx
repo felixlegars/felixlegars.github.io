@@ -1,0 +1,218 @@
+---
+sidebar_position: 2
+title: ⚖️ TP — Structures séquentielles
+description: Activités et exercices sur les séquences Python
+---
+
+# TP — Structures séquentielles et parcours
+
+## Préparation
+
+Dans la console Python, crée ces trois structures :
+
+```py
+s = "python"
+t = (3, 1, 4, 1, 5, 9)
+l = [3, 1, 4, 1, 5, 9]
+```
+
+En binôme, observe ce qu'elles ont en commun et ce qui les distingue.
+
+## Activités guidées
+
+### 1. Indices et longueur
+
+Prédis puis teste les expressions suivantes :
+
+```py
+mot = "Informatique"
+mot[1]
+mot[-2]
+mot[100]
+len("helloWorld!")
+len([2, 0, 2, 7])
+len((True, False))
+```
+
+Que valent les indices du premier et du dernier élément ? Quelle erreur
+obtiens-tu avec `mot[100]` ?
+
+### 2. Tranches
+
+Avec `nombres = [10, 20, 30, 40, 50, 60, 70, 80]` et
+`mot = "Informatique"`, complète le tableau :
+
+| Expression | Résultat |
+| --- | --- |
+| `mot[8:]` | |
+| `nombres[1:3]` | |
+| `nombres[-3:]` | |
+| `nombres[3:100]` | |
+
+Écris ensuite une expression donnant `"mat"`, les valeurs de `20` à `70`
+et les trois derniers éléments de `nombres`.
+
+<details>
+<summary>Correction</summary>
+
+```py
+mot[8:]          # "ique"
+nombres[1:3]     # [20, 30]
+nombres[-3:]     # [60, 70, 80]
+nombres[3:100]   # [40, 50, 60, 70, 80]
+mot[5:8]         # "mat"
+nombres[1:7]     # [20, 30, 40, 50, 60, 70]
+nombres[-3:]     # [60, 70, 80]
+```
+
+</details>
+
+### 3. Mutabilité et concaténation
+
+Avec `s = "salut"`, `l = [3, 1, 4]` et `t = (3, 1, 4)`, tente de remplacer
+l'élément d'indice `1` par `"0"`. Note la structure qui accepte la modification
+et les erreurs rencontrées.
+
+<details>
+<summary>Correction</summary>
+
+```py
+s[1] = "0"  # TypeError
+l[1] = "0"  # OK
+t[1] = "0"  # TypeError
+```
+
+Seule la liste est mutable. Les chaînes et les tuples lèvent une `TypeError`.
+</details>
+
+Teste ensuite :
+
+
+
+```py
+>>> nombres + [90, 100, 110]
+>>> "hello" + "World"
+>>> ("Mercure", "Vénus") + ("Terre", "Mars", "Jupiter")
+```
+
+<details>
+<summary>Correction</summary>
+
+```py
+>>> [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110]
+>>> "helloWorld"
+>>> ("Mercure", "Vénus", "Terre", "Mars", "Jupiter")
+```
+
+</details>
+
+### 4. Parcours
+
+Écris les fonctions suivantes :
+
+```py
+def affichage(s):
+    """Affiche chaque élément de s."""
+
+def indices(s):
+    """Affiche chaque indice et son élément."""
+```
+
+<details>
+<summary>Correction</summary>
+
+```py
+def affichage(s):
+    for element in s:
+        print(element)
+
+def indices(s):
+    for i in range(len(s)):
+        print(i, s[i])
+```
+
+</details>
+
+## Exercices
+
+:::exercice
+
+### Exercice 1 — Extraire une tranche
+
+Écris `tranche(s, a, b)` qui renvoie la tranche de `s` entre `a` et `b`.
+
+:::
+
+### Exercice 2 — Convertir un tuple
+
+Écris `convertir_en_chaine(t)` qui convertit un tuple en chaîne de caractères.
+
+### Exercice 3 — Additionner une liste
+
+Écris `somme(l)` qui renvoie la somme des éléments de `l`.
+
+### Exercice 4 — Compter les voyelles
+
+Écris `compter_voyelles(texte)` qui renvoie le nombre de voyelles.
+
+### Exercice 5 — Maximum et indice
+
+Écris `maximum(l)` qui renvoie la plus grande valeur, puis
+`maximum_indice(l)` qui renvoie son indice.
+
+### Exercice 6 — Palindrome
+
+Écris `est_palindrome(mot)` qui renvoie `True` si le mot se lit dans les deux
+sens.
+
+<details>
+<summary>Corrections</summary>
+
+```py
+def tranche(s, a, b):
+    return s[a:b]
+
+def convertir_en_chaine(t):
+    resultat = ""
+    for element in t:
+        resultat += str(element)
+    return resultat
+
+def somme(l):
+    total = 0
+    for element in l:
+        total += element
+    return total
+
+def compter_voyelles(texte):
+    voyelles = "aeiouy"
+    total = 0
+    for lettre in texte.lower():
+        if lettre in voyelles:
+            total += 1
+    return total
+
+def maximum(l):
+    maxi = l[0]
+    for element in l:
+        if element > maxi:
+            maxi = element
+    return maxi
+
+def maximum_indice(l):
+    indice_maxi = 0
+    for i in range(1, len(l)):
+        if l[i] > l[indice_maxi]:
+            indice_maxi = i
+    return indice_maxi
+
+def est_palindrome(mot):
+    for i in range(len(mot) // 2):
+        if mot[i] != mot[-i - 1]:
+            return False
+    return True
+```
+
+</details>
+
+<ProgressionButton lessonSlug="03-types-construits/structures-sequentielles/deuxieme-lecon" />

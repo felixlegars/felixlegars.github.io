@@ -1,0 +1,8 @@
+{
+  "label": "Chapitre 13 — Algorithmes avancés",
+  "position": 13,
+  "link": {
+    "type": "generated-index",
+    "description": "Recherche dichotomique, algorithmes gloutons et kNN."
+  }
+}

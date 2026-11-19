@@ -1,0 +1,138 @@
+---
+sidebar_position: 1
+title: 📘 Cours — Structures séquentielles
+description: Indices, tranches, mutabilité, concaténation et parcours
+---
+
+# Structures séquentielles et parcours
+
+:::objectifs
+
+À la fin de la séance, tu sais :
+
+- accéder à un élément avec son **indice** ;
+- extraire une **tranche** ;
+- reconnaître les structures **mutables** ;
+- assembler deux structures par concaténation ;
+- parcourir une structure avec une boucle `for`.
+
+:::
+
+:::vocabulaire
+
+Une structure **séquentielle** range ses éléments les uns à la suite des
+autres, dans un ordre précis.
+
+:::
+
+## Les structures séquentielles
+
+| Structure | Type | Notation vide | Exemple |
+| --- | --- | --- | --- |
+| Chaîne | `str` | `""` | `"abc"` |
+| Tuple | `tuple` | `()` | `(1, 2)` |
+| Liste | `list` | `[]` | `[1, 2]` |
+
+Une séquence à un seul élément s'écrit `"a"`, `(1,)` ou `[1]` selon
+la structure.
+
+## Accéder à un élément
+
+On accède à un élément avec son indice. Le premier indice vaut `0` et le
+dernier vaut `n - 1`, où `n` est la taille de la séquence.
+
+```py
+mot = "Informatique"
+mot[0]   # "I"
+mot[3]   # "o"
+mot[-1]  # "e"
+```
+
+Les indices négatifs comptent depuis la fin. Un indice hors limites provoque
+une `IndexError`.
+
+:::attention
+
+Un indice hors limites provoque une `IndexError`. Les indices commencent à
+`0`, pas à `1`.
+
+:::
+
+La fonction `len` renvoie le nombre d'éléments :
+
+```py
+len("helloWorld!")  # 11
+len([2, 0, 2, 7])    # 4
+len(())             # 0
+```
+
+## Les tranches
+
+Une tranche extrait une partie d'une séquence avec la syntaxe `s[a:b]`.
+La borne de début est incluse et la borne de fin est exclue.
+
+```py
+mot = "Informatique"
+mot[2:5]   # "for"
+mot[5:]    # "matique"
+mot[:-1]   # "Informatiqu"
+```
+
+Une tranche ne provoque jamais d'`IndexError` : elle s'arrête à la fin de la
+séquence si nécessaire.
+
+## Mutabilité
+
+Une structure est **mutable** si ses éléments peuvent être modifiés sur place.
+Les listes sont mutables, contrairement aux chaînes et aux tuples.
+
+```py
+liste = [3, 1, 4]
+liste[1] = 9
+liste  # [3, 9, 4]
+```
+
+Les affectations suivantes provoquent une `TypeError` :
+
+```py
+"salut"[1] = "0"
+(3, 1, 4)[1] = "0"
+```
+
+## Concaténation
+
+L'opérateur `+` assemble deux séquences du même type.
+L'opérateur `*` permet de répéter une séquence.
+
+```py
+[1, 2] + [3, 4]       # [1, 2, 3, 4]
+"hello" + "World"     # "helloWorld"
+(1, 2) + (3, 4)       # (1, 2, 3, 4)
+"ha" * 3              # "hahaha"
+```
+
+On ne peut pas concaténer directement une chaîne et une liste.
+
+## Parcourir une séquence
+
+Une boucle `for` répète les mêmes instructions pour chaque élément.
+
+```py
+playlist = ["Pilé", "Parisienne", "Canon in D"]
+
+for titre in playlist:
+    print("Lecture de", titre)
+```
+
+Pour parcourir les indices, on utilise `range(len(s))` :
+
+```py
+def afficher_indices(s):
+    for i in range(len(s)):
+        print(i, s[i])
+```
+
+> **À retenir :** les indices servent à accéder aux éléments, les tranches à
+> extraire une partie et la boucle `for` à parcourir toute la séquence.
+
+<ProgressionButton lessonSlug="03-types-construits/structures-sequentielles/premiere-lecon" />

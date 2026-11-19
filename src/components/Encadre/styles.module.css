@@ -1,0 +1,61 @@
+.encadre {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 0.35rem solid var(--encadre-color);
+  border-radius: 0.75rem;
+  background: var(--encadre-background);
+  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08);
+}
+
+.encadre--objectifs {
+  --encadre-color: #2563eb;
+  --encadre-background: #eff6ff;
+}
+
+.encadre--vocabulaire {
+  --encadre-color: #7c3aed;
+  --encadre-background: #f5f3ff;
+}
+
+.encadre--attention {
+  --encadre-color: #d97706;
+  --encadre-background: #fffbeb;
+}
+
+.encadre--exercice {
+  --encadre-color: #16a34a;
+  --encadre-background: #f0fdf4;
+}
+
+[data-theme='dark'] .encadre--objectifs {
+  --encadre-background: #172554;
+}
+
+[data-theme='dark'] .encadre--vocabulaire {
+  --encadre-background: #2e1065;
+}
+
+[data-theme='dark'] .encadre--attention {
+  --encadre-background: #451a03;
+}
+
+[data-theme='dark'] .encadre--exercice {
+  --encadre-background: #052e16;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+  color: var(--encadre-color);
+  font-size: 1.05rem;
+}
+
+.icon {
+  font-size: 1.35rem;
+}
+
+.content > :last-child {
+  margin-bottom: 0;
+}
